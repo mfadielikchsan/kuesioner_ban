@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f8ff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+h3.dunlop {
+  color: #e6b800; /* kuning */
+}
+
+h3.bridgestone {
+  color: #d40000; /* merah */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  background: #fff;
+  transition: border 0.2s ease;
+}
+
+select:focus {
+  border-color: #4e8cff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(78, 140, 255, 0.3);
+}
+
+.slider-group {
+  margin: 15px 0;
+}
+
+.slider-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 10px;
+  border-radius: 10px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+/* 🟡 Dunlop Yellow */
+.dunlop-slider input[type="range"] {
+  background: #ffe680;
+}
+
+.dunlop-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e6b800;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* 🔴 Bridgestone Red */
+.bridgestone-slider input[type="range"] {
+  background: #ffcccc;
+}
+
+.bridgestone-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #d40000;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.slider-value {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 10px;
+  color: #333;
+}
+
+button#submit {
+  width: 100%;
+  padding: 14px;
+  background: #4e8cff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 20px;
+}
+
+button#submit:hover {
+  background: #3574e8;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 20px; }
+}
