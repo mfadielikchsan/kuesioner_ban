@@ -5,48 +5,32 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5c29mYnhjem9hZXNpaHhwZWxiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjM4MjIsImV4cCI6MjA3ODYzOTgyMn0.X4Nec16yXjcrQtpUzAlkwJDgQKHKz8lqU4WF7kjp2KU"
 );
 
-// =========================
-// Load Provinces
-// =========================
-fetch("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json")
-  .then(res => res.json())
-  .then(data => {
-    const region = document.getElementById("region");
-    region.innerHTML = `<option value="">Pilih Provinsi</option>`;
+// AMBIL SEMUA INPUT
+const nameInput = document.getElementById("name");
+const ds = document.getElementById("ds");
+const dc = document.getElementById("dc");
+const dn = document.getElementById("dn");
+const ks = document.getElementById("ks");
+const kc = document.getElementById("kc");
+const kn = document.getElementById("kn");
 
-    data.forEach(p => {
-      region.innerHTML += `<option value="${p.name}">${p.name}</option>`;
-    });
-  });
-
-// =========================
-// Slider Live Value
-// =========================
-const sliders = ["dd", "dc", "dg", "bd", "bc", "bg"];
-
-sliders.forEach(id => {
-  const slider = document.getElementById(id);
-  const output = document.getElementById(id + "_val");
-  output.textContent = slider.value;
-  slider.oninput = () => output.textContent = slider.value;
-});
-
-// =========================
-// Submit with SweetAlert
-// =========================
+// Submit
 document.getElementById("submit").onclick = async () => {
 
-  if (!gender.value) {
-    Swal.fire("Error", "Silakan pilih jenis kelamin.", "error");
+  if (!nameInput.value.trim()) {
+    Swal.fire("Error", "Silakan masukkan nama.", "error");
     return;
   }
 
-  if (!region.value) {
-    Swal.fire("Error", "Silakan pilih provinsi.", "error");
-    return;
+  const allInputs = [ds, dc, dn, ks, kc, kn];
+
+  for (let i of allInputs) {
+    if (i.value < 0 || i.value > 100 || i.value === "") {
+      Swal.fire("Error", "Nilai harus antara 0 hingga 100.", "error");
+      return;
+    }
   }
 
-  // Confirm
   const confirm = await Swal.fire({
     title: "Apakah data sudah benar?",
     icon: "question",
@@ -58,14 +42,13 @@ document.getElementById("submit").onclick = async () => {
   if (!confirm.isConfirmed) return;
 
   const data = {
-    gender: gender.value,
-    region: region.value,
-    dunlop_durability: +dd.value,
+    name: nameInput.value.trim(),
+    dunlop_speedtest: +ds.value,
     dunlop_comfort: +dc.value,
-    dunlop_grip: +dg.value,
-    bridge_durability: +bd.value,
-    bridge_comfort: +bc.value,
-    bridge_grip: +bg.value
+    dunlop_noise: +dn.value,
+    komp_speedtest: +ks.value,
+    komp_comfort: +kc.value,
+    komp_noise: +kn.value
   };
 
   const { error } = await supabase.from("responses").insert([data]);
