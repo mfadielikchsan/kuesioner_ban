@@ -34,7 +34,7 @@ form.addEventListener("submit", async (e) => {
   }
 
   const confirm = await Swal.fire({
-    title: "Apakah data sudah benar?",
+    title: "Apakah yakin data sudah benar?",
     icon: "question",
     showCancelButton: true,
     confirmButtonText: "Ya, kirim",
@@ -61,11 +61,12 @@ form.addEventListener("submit", async (e) => {
     Swal.fire("Gagal", error.message, "error");
   } else {
     form.reset();
-    Swal.fire("Berhasil!", "Terima kasih, data berhasil dikirim", "success");
+    Swal.fire("Berhasil!", "Terima kasih, data berhasil dikirim!", "success");
   }
 });
 
 };
+
 
 
 
