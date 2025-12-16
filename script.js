@@ -14,7 +14,10 @@ const kc = document.getElementById("kc");
 const kn = document.getElementById("kn");
 
 // Submit
-document.getElementById("submit").onclick = async () => {
+const form = document.getElementById("myForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault(); // 
 
   if (!nameInput.value.trim()) {
     Swal.fire("Error", "Silakan masukkan nama.", "error");
@@ -24,7 +27,7 @@ document.getElementById("submit").onclick = async () => {
   const allInputs = [ds, dc, dn, ks, kc, kn];
 
   for (let i of allInputs) {
-    if (i.value < 0 || i.value > 100 || i.value === "") {
+    if (i.value === "" || i.value < 0 || i.value > 100) {
       Swal.fire("Error", "Nilai harus antara 0 hingga 100.", "error");
       return;
     }
@@ -42,23 +45,28 @@ document.getElementById("submit").onclick = async () => {
 
   const data = {
     name: nameInput.value.trim(),
-    dunlop_speedtest: +ds.value,
-    dunlop_comfort: +dc.value,
-    dunlop_noise: +dn.value,
-    komp_speedtest: +ks.value,
-    komp_comfort: +kc.value,
-    komp_noise: +kn.value
+    dunlop_speedtest: Number(ds.value),
+    dunlop_comfort: Number(dc.value),
+    dunlop_noise: Number(dn.value),
+    komp_speedtest: Number(ks.value),
+    komp_comfort: Number(kc.value),
+    komp_noise: Number(kn.value)
   };
 
-  const { error } = await supabase.from("responses").insert([data]);
+  const { error } = await supabase
+    .from("responses")
+    .insert([data]);
 
   if (error) {
     Swal.fire("Gagal", error.message, "error");
   } else {
-    document.getElementById("myForm").reset();
+    form.reset();
     Swal.fire("Berhasil!", "Terima kasih, data berhasil dikirim", "success");
   }
+});
+
 };
+
 
 
 
