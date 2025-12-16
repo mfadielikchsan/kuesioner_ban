@@ -34,7 +34,7 @@ form.addEventListener("submit", async (e) => {
   }
 
   const confirm = await Swal.fire({
-    title: "Apakah yakin data sudah benar?",
+    title: "Apakah data sudah benar?",
     icon: "question",
     showCancelButton: true,
     confirmButtonText: "Ya, kirim",
@@ -64,6 +64,7 @@ form.addEventListener("submit", async (e) => {
     Swal.fire("Berhasil!", "Terima kasih, data berhasil dikirim!", "success");
   }
 });
+
 
 
 
