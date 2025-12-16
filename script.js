@@ -55,12 +55,10 @@ document.getElementById("submit").onclick = async () => {
   if (error) {
     Swal.fire("Gagal", error.message, "error");
   } else {
-    let inputs = document.querySelectorAll("input");
-    inputs.forEach(input => {
-      input.value = "";
-    });
-    Swal.fire("Berhasil!", "Terima kasih, data berhasil dikirim!", "success");
+    document.getElementById("myForm").reset();
+    Swal.fire("Berhasil!", "Terima kasih, data berhasil dikirim", "success");
   }
 };
+
 
 
