@@ -43,9 +43,7 @@ label {
   margin-bottom: 6px;
 }
 
-/* ================================
-   INPUT STYLE (Sudah Diperbaiki)
-   ================================ */
+
 input[type="text"],
 input[type="number"] {
   width: 100%;
@@ -99,3 +97,4 @@ button#submit:hover {
     padding: 20px;
   }
 }
+
