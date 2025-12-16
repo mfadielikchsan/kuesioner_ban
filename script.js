@@ -5,7 +5,6 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5c29mYnhjem9hZXNpaHhwZWxiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjM4MjIsImV4cCI6MjA3ODYzOTgyMn0.X4Nec16yXjcrQtpUzAlkwJDgQKHKz8lqU4WF7kjp2KU"
 );
 
-// AMBIL SEMUA INPUT
 const nameInput = document.getElementById("name");
 const ds = document.getElementById("ds");
 const dc = document.getElementById("dc");
@@ -59,3 +58,4 @@ document.getElementById("submit").onclick = async () => {
     Swal.fire("Berhasil!", "Terima kasih, data berhasil dikirim!", "success");
   }
 };
+
